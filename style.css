@@ -1,45 +1,61 @@
+/* ===== General ===== */
 body {
   margin: 0;
-  font-family: Poppins, Arial;
+  font-family: Poppins, Arial, sans-serif;
+  color: #555; /* default paragraph color */
+  line-height: 1.6;
+  background: #fff;
 }
 
+/* ===== Header / Navbar ===== */
 #header {
   background: #111;
-  color: white;
+  color: #fff;
   padding: 15px 0;
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 
 #header .logo {
   margin: 0;
   font-size: 22px;
   font-weight: 700;
+  color: #fff;
 }
 
 #navbar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 #navbar ul li {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 #navbar a {
-  color: white;
+  color: #fff;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
+#navbar a:hover {
+  color: #00bcd4; /* exact demo hover color */
+}
+
+/* ===== Hero Section ===== */
 #hero {
   background: linear-gradient(#000000b0, #000000b0), url("../img/hero.jpg") center/cover fixed;
   height: 90vh;
-  color: white;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 20px;
 }
 
 #hero h1 {
@@ -49,19 +65,41 @@ body {
 
 #hero h2, #hero h3 {
   margin: 5px 0;
+  color: #fff;
 }
 
+#hero p {
+  margin-top: 20px;
+}
+
+/* ===== Sections ===== */
 section {
   padding: 60px 20px;
 }
 
+section h2 {
+  color: #222; /* section heading color */
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+section p, section li {
+  color: #555; /* paragraph and list color */
+  font-size: 16px;
+}
+
+/* ===== Portfolio Grid ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -72,28 +110,55 @@ section {
 
 .card img {
   width: 100%;
-  border-radius: 8px;
+  display: block;
+  border-bottom: 1px solid #eee;
 }
 
 .card h4 {
-  margin: 10px 0 5px 0;
+  margin: 10px;
+  font-size: 18px;
+  color: #222;
 }
 
 .card p {
+  margin: 0 10px 10px 10px;
   font-size: 14px;
+  color: #555;
 }
 
+/* ===== Buttons ===== */
 .btn {
   display: inline-block;
   padding: 10px 20px;
   background: #111;
-  color: white;
+  color: #fff;
   text-decoration: none;
   border-radius: 5px;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background: #333;
+  background: #00bcd4;
+  color: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #navbar ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  #hero h1 {
+    font-size: 36px;
+  }
+
+  #hero h2 {
+    font-size: 24px;
+  }
+
+  #hero h3 {
+    font-size: 20px;
+  }
 }
