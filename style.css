@@ -133,7 +133,8 @@ section h2 {
   margin-bottom: 20px;
 }
 
-section p, section li {
+section p,
+section li {
   color: #ccc;
 }
 
@@ -153,7 +154,7 @@ section p, section li {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card img {
@@ -181,4 +182,42 @@ section p, section li {
 
 .btn:hover {
   color: #fff;
+}
+
+/* ===== About Section ===== */
+.about-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.about-img img {
+  width: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.about-info {
+  flex: 1;
+}
+
+.about-info h3 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.about-details {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.about-details div {
+  flex: 1;
+}
+
+.about-details strong {
+  color: #007bff; /* Blue color similar to example */
 }
