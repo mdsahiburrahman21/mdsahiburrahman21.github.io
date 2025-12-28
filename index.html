@@ -1,181 +1,378 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MD. Sahibur Rahman | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD. Sahibur Rahman | Portfolio</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+body {
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+/* ===== TOP SCROLL BAR ===== */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: #0d6efd;
+  z-index: 3000;
+}
 
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    /* ===== SIDEBAR ===== */
-    .sidebar {
-      width: 260px;
-      height: 100vh;
-      position: fixed;
-      background: #0d1b2a;
-      color: #fff;
-      padding: 30px 20px;
-    }
-
-    .sidebar img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: auto;
-    }
-
-    .sidebar h4 {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .sidebar p {
-      text-align: center;
-      font-size: 14px;
-      color: #bbb;
-    }
-
-    .sidebar a {
-      color: #fff;
-      text-decoration: none;
-      display: block;
-      padding: 8px 0;
-    }
-
-    .sidebar a.active,
-    .sidebar a:hover {
-      color: #00bcd4;
-    }
-
-    .social-icons a {
-      margin: 0 6px;
-      font-size: 16px;
-      color: #fff;
-    }
-
-
-    /* ===== MAIN ===== */
-    main {
-      margin-left: 260px;
-    }
-
-    section {
-      padding: 80px 40px;
-      min-height: 100vh;
-    }
-
-    /* ===== SECTION TITLE ===== */
-    .section-title h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .section-title h2::after {
-      content: "";
-      width: 50px;
-      height: 3px;
-      background: #149ddd;
-      display: block;
-      margin-top: 5px;
-    }
-
-    /* ===== HERO ===== */
-     #hero {
-      background: #f7fafd;
-      display: flex;
-      align-items: center;
-    }
-    /* ===== ABOUT ===== */
-    .section-title h2 {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .section-title h2::after {
-      content: "";
-      width: 50px;
-      height: 3px;
-      background: #00bcd4;
-      display: block;
-      margin-top: 5px;
-    }
-
-    /* ===== SKILLS ===== */
-    .skills-section {
-      background: #f7fafd;
-    }
-
-    .skills-content .progress {
-      margin-bottom: 25px;
-    }
-
-    .skills-content .skill {
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .progress-bar-wrap {
-      background: #e9ecef;
-      height: 10px;
-      border-radius: 3px;
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 10px;
-      background: #149ddd;
-      border-radius: 3px;
-      transition: width 1.2s ease-in-out;
-    }
-
-    /* ===== RESUME ===== */
-    #resume {
+/* ===== NAVBAR ===== */
+header {
+  position: fixed;
+  width: 100%;
   background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ===== NAV INDICATOR ===== */
+.nav-wrapper {
+  position: relative;
+}
+
+#navMenu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+#navMenu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 0;
+}
+
+#navMenu a:hover {
+  color: #0d6efd;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #0d6efd;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 120px 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+}
+
+.section-title span {
+  color: #0d6efd;
+}
+
+/* ===== HERO SECTION (WHITE MODERN) ===== */
+.hero {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 120px 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT CONTENT */
+.hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #0d6efd;
+}
+
+.hero h1 mark {
+  background: #0d6efd;
+  color: #fff;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+.hero h3 {
+  margin: 25px 0;
+  font-weight: 500;
+  color: #475569;
+}
+
+.hero p {
+  max-width: 520px;
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #084298;
+}
+
+.btn-outline {
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* RIGHT IMAGE */
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* FLOATING TAGS */
+.tag {
+  position: absolute;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.tag.design { top: 20%; right: -40px; }
+.tag.code { bottom: 20%; left: -40px; }
+.tag.idea { bottom: 5%; right: -20px; }
+
+.tag i {
+  color: #0d6efd;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .tag {
+    display: none;
+  }
+}
+
+/* ===== ABOUT ===== */
+.about p {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  color: #555;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  background: #f8f9fa;
+}
+
+.skill {
+  margin-bottom: 25px;
+}
+
+.skill span {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.bar {
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  background: #0d6efd;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+/* ===== PORTFOLIO ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 100%;
+  transition: 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ===== RESUME SECTION ===== */
+#resume {
+  background: #ffffff;
 }
 
 .resume-title {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  margin-top: 20px;
   margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
 .resume-item {
-  padding: 0 0 20px 20px;
-  margin-top: -2px;
-  border-left: 2px solid #149ddd;
   position: relative;
+  padding-left: 25px;
+  margin-bottom: 30px;
+  border-left: 2px solid #0d6efd;
 }
 
 .resume-item::before {
   content: "";
   position: absolute;
+  left: -7px;
+  top: 5px;
   width: 14px;
   height: 14px;
+  background: #ffffff;
+  border: 2px solid #0d6efd;
   border-radius: 50%;
-  left: -8px;
-  top: 0;
-  background: #fff;
-  border: 2px solid #149ddd;
 }
 
 .resume-item h4 {
@@ -186,370 +383,585 @@
 
 .resume-item h5 {
   font-size: 14px;
-  background: #e4f4fb;
-  padding: 5px 10px;
-  display: inline-block;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.resume-item p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.resume-item ul {
+  padding-left: 18px;
+}
+
+.resume-item ul li {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== CV BUTTON ===== */
+.cv-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0d6efd;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+/* ===== ABOUT SECTION ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.about-content h3 {
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.resume-item ul {
-  padding-left: 20px;
+.about-tagline {
+  font-style: italic;
+  color: #64748b;
+  margin-bottom: 20px;
 }
 
-.resume-item ul li {
-  padding-bottom: 8px;
+.about-content p {
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.7;
 }
 
+.about-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+}
 
+.about-info div {
+  font-size: 14px;
+  color: #475569;
+}
 
-    /* ===== PORTFOLIO ===== */
-    .portfolio-filters {
-      list-style: none;
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.about-info strong {
+  color: #0f172a;
+}
 
-    .portfolio-filters li {
-      display: inline-block;
-      margin: 0 15px;
-      cursor: pointer;
-      font-weight: 600;
-    }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-    .portfolio-filters li.active {
-      color: #149ddd;
-    }
+  .about-info {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== CONTACT SECTION ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: flex-start;
+}
 
-    .portfolio-item {
-      margin-bottom: 30px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    .portfolio-item img {
-      width: 100%;
-      transition: 0.4s;
-    }
+.contact-box {
+  display: flex;
+  gap: 15px;
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 14px;
+  align-items: center;
+}
 
-    .portfolio-item:hover img {
-      transform: scale(1.08);
-    }
+.contact-box span {
+  font-size: 22px;
+}
 
-    /* ===== CONTACT ===== */
-    .info-box {
-      background: #f7fafd;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-    }
-  </style>
+.contact-box h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.contact-box p {
+  margin: 3px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.contact-form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.contact-form button {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #084298;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== RESUME TEXT COLOR ONLY ===== */
+#resume h2,
+#resume h3,
+#resume h4 {
+  color: #0f172a;   /* dark heading */
+}
+
+#resume p,
+#resume li {
+  color: #475569;   /* readable academic text */
+}
+
+#resume h5 {
+  color: #64748b;   /* muted date text */
+}
+
+#resume .resume-title {
+  color: #0d6efd;   /* blue section titles */
+}
+/* ===== HERO SOCIAL ICONS ===== */
+.hero-social {
+  margin-top: 35px;
+  display: flex;
+  gap: 18px;
+}
+/* ===== HERO SOCIAL ICONS (BELOW BUTTONS) ===== */
+.hero-social {
+  margin-top: 25px;        /* space below buttons */
+  display: flex;
+  gap: 16px;
+}
+
+.hero-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-social a:hover {
+  background: #0d6efd;
+  color: #ffffff;
+  transform: translateY(-4px);
+}
+
+/* Center on mobile */
+@media (max-width: 900px) {
+  .hero-social {
+    justify-content: center;
+  }
+}
+
+</style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#menu" data-bs-offset="100">
+<body>
 
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="sidebar">
-    <img src="self photo.jpeg">
-    <h4>MD. Sahibur Rahman</h4>
-    <p>Urban & Rural Planning Discipline </p>
-    <p>Khulna University </p>
+<div id="scroll-progress"></div>
 
-    <div class="text-center my-3 social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="assets/MD_Sahibur_Rahman_CV.pdf" class="cv-float" download>📄 Academic CV</a>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <ul id="navMenu">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <span class="nav-indicator"></span>
+    </div>
+    
+  </nav>
+</header>
+
+<section id="hero" class="hero">
+  <div class="hero-container">
+
+    <!-- LEFT -->
+
+    <div class="hero-content">
+      <h1>
+        <mark>Hello, I'm</mark> <span>MD. Sahibur</span><br>
+        <span>Rahman</span>
+      </h1>
+
+      <h3>Urban Planner | GIS & Data Analysis</h3>
+
+      <p>
+        Passionate about sustainable urban development, spatial analysis,
+        and data-driven planning solutions.
+      </p>
+      <div class="hero-buttons">
+  <a href="#portfolio" class="btn-primary">View My Work</a>
+  <a href="#contact" class="btn-outline">Get In Touch</a>
+</div>
+
+<!-- SOCIAL ICONS (BELOW BUTTONS) -->
+<div class="hero-social">
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://www.facebook.com/yourusername" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+</div>
+
     </div>
 
-    <nav id="menu" class="nav flex-column">
-      <a class="nav-link active" href="#hero">Home</a>
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#resume">Resume</a>
-      <a class="nav-link" href="#portfolio">Portfolio</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
+    <!-- RIGHT -->
+    <div class="hero-image">
+      <img src="self photo.jpeg" alt="Profile Image">
 
-    <div class="text-center mt-4">
-      <button class="btn btn-sm btn-outline-light" onclick="toggleTheme()">🌙 Dark / Light</button>
-    </div>
-  </aside>
-
-  <!-- ===== MAIN ===== -->
-  <main>
-
-    <!-- HERO -->
-    <section id="hero">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <h1>MD. Sahibur Rahman</h1>
-            <h4 class="text-muted">Urban & Rural Planning Discipline </h4>
-          </div>
-          <div class="col-md-6 text-center">
-            <img src="self photo.jpeg" class="img-fluid rounded" width="320">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="tag design">
+        🎨 <span>Design</span>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <img src="self photo.jpeg" class="img-fluid rounded">
-        </div>
-        <div class="col-md-8">
-          <h4>Urban & Rural Planning </h4>
-          <p class="fst-italic">Focused on sustainable city development.</p>
+      <div class="tag code">
+        💻 <span>GIS / Code</span>
+      </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong>Birthday:</strong> 7 Jan 2003</p>
-              <p><strong>Phone:</strong> +880 1609807578</p>
-            </div>
-            <div class="col-md-6">
-              <p><strong>Degree:</strong> Undergraduate</p>
-              <p><strong>Email:</strong> mdsahiburrahman7@gmail.com</p>
-            </div>
-          </div>
-        </div>
+      <div class="tag idea">
+        💡 <span>Ideas</span>
       </div>
     </div>
-  </section>
-  <!-- SKILLS -->
-    <section id="skills" class="skills-section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
-        </div>
 
-        <div class="row skills-content">
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill">PowerBI,Tablue,Excell <span>100%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">AutoCAD <span>90%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="90"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">ArcGIS,QGIS,GIS Pro <span>75%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="75"></div>
-              </div>
-            </div>
-          </div>
+  </div>
+</section>
 
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill">MS word, MS Powerpoint <span>80%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="80"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Report <span>90%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="90"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Photoshop <span>55%</span></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" data-progress="55"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- RESUME -->
-    <section id="resume">
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about reveal">
   <div class="container">
 
     <div class="section-title">
-      <h2>Resume</h2>
-      <p>
-        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-        aliquid fuga eum quidem.
-      </p>
+      <h2>About <span>Me</span></h2>
+      <p>A brief introduction about myself</p>
     </div>
 
-    <div class="row">
+    <div class="about-grid">
 
-      <!-- ===== LEFT COLUMN ===== -->
-      <div class="col-lg-6">
+      <!-- LEFT IMAGE -->
+      <div class="about-image">
+        <img src="self photo.jpeg" alt="MD. Sahibur Rahman">
+      </div>
 
-        <!-- SUMMARY -->
+      <!-- RIGHT CONTENT -->
+      <div class="about-content">
+        <h3>Urban & Rural Planning Student</h3>
+        <p class="about-tagline">
+          Focused on sustainable urban development, GIS, and data-driven planning.
+        </p>
+
+        <p>
+          I am currently studying Urban & Rural Planning at Khulna University.
+          My academic interests include spatial analysis, urban sustainability,
+          and research-based planning solutions.
+        </p>
+
+        <div class="about-info">
+          <div>
+            <strong>Birthday:</strong>
+            <span>7 January 2003</span>
+          </div>
+
+          <div>
+            <strong>Degree:</strong>
+            <span>Undergraduate</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="skills" class="skills reveal">
+  <div class="container">
+    <div class="section-title"><h2>My <span>Skills</span></h2></div>
+    <div class="skill"><span>GIS</span><div class="bar"><div data-width="85%"></div></div></div>
+    <div class="skill"><span>AutoCAD</span><div class="bar"><div data-width="90%"></div></div></div>
+    <div class="skill"><span>Power BI</span><div class="bar"><div data-width="95%"></div></div></div>
+    <div class="skill"><span>Tablue</span><div class="bar"><div data-width="90%"></div></div></div>
+  </div>
+</section>
+<!-- ===== RESUME ===== -->
+<section id="resume" class="reveal">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>My <span>Resume</span></h2>
+      <p>Academic background & professional experience</p>
+    </div>
+
+    <div class="resume-grid">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
         <h3 class="resume-title">Summary</h3>
         <div class="resume-item">
           <h4>MD. Sahibur Rahman</h4>
           <p><em>
-            Innovative and deadline-driven Urban & Regional Planning student
-            with experience in sustainable development and research.
+            Urban & Regional Planning student focused on sustainable development,
+            GIS analysis, and research-based planning solutions.
           </em></p>
           <ul>
             <li>Tangail, Dhaka, Bangladesh</li>
-            <li>+880 16 0980 7578</li>
-            <li>mdsahiburrahman7@gmail.com.com</li>
+            <li>+880 1609 807578</li>
+            <li>mdsahiburrahman7@gmail.com</li>
           </ul>
         </div>
 
-        <!-- EDUCATION -->
         <h3 class="resume-title">Education</h3>
-        <div class="resume-item">
-          <h4>Master of Urban & Rural Planning</h4>
-          <h5>2021 - 2023</h5>
-          <p><Khulna University, Khulna, Bangladesh</em></p>
-          <p>
-            Focused on spatial planning, GIS applications, and sustainable
-            urban development strategies.
-          </p>
-        </div>
 
         <div class="resume-item">
-          <h4>Bachelor of Urban & Rural Planning</h4>
-          <h5>2016 - 2020</h5>
-          <p><em>Khulna University, Khulna, Bangladesh</em></p>
-          <p>
-            Developed strong foundations in land-use planning, transportation,
-            and environmental planning.
-          </p>
-        </div>
+  <h4>Bachelor of Urban & Rural Planning</h4>
+  <h5>Session:2021-2022</h5>
+  <p>Khulna University, Khulna, Bangladesh</p>
+</div>
+
+<div class="resume-item">
+  <h4>Higher Secondary Certificate (HSC)</h4>
+  <h5>Passed:2021</h5>
+  <p><strong>GPA:</strong> 5.00</p>
+  <p>Abul Hossain College, Tangail, Bangladesh</p>
+</div>
+
+<div class="resume-item">
+  <h4>Secondary School Certificate (SSC)</h4>
+  <h5>Passed:2019</h5>
+  <p><strong>GPA:</strong> 4.61</p>
+  <p>Velayet Hossain Bahumukhi Uchcha Bidyalay, Tangail, Bangladesh</p>
+</div>
+
 
       </div>
 
-      <!-- ===== RIGHT COLUMN ===== -->
-      <div class="col-lg-6">
+      <!-- RIGHT COLUMN -->
+      <div>
 
         <h3 class="resume-title">Professional Experience</h3>
 
         <div class="resume-item">
           <h4>Urban Planning Intern</h4>
-          <h5>2023 - Present</h5>
-          <p><em>Planning Consultancy Firm, Dhaka</em></p>
+          <h5>2023 – Present</h5>
+          <p>Planning Consultancy Firm, Dhaka</p>
           <ul>
-            <li>Participated in land-use and zoning analysis projects</li>
-            <li>Assisted in GIS-based spatial data analysis</li>
-            <li>Prepared planning reports and presentations</li>
-            <li>Collaborated with senior planners and engineers</li>
+            <li>Land-use and zoning analysis</li>
+            <li>GIS-based spatial data analysis</li>
+            <li>Planning reports & presentations</li>
           </ul>
         </div>
 
         <div class="resume-item">
           <h4>Research Assistant</h4>
-          <h5>2020 - 2021</h5>
-          <p><em>University Research Lab</em></p>
+          <h5>2020 – 2021</h5>
+          <p>University Research Lab</p>
           <ul>
-            <li>Conducted urban growth and sustainability research</li>
-            <li>Collected and analyzed socio-economic data</li>
-            <li>Supported academic publications and reports</li>
+            <li>Urban growth & sustainability research</li>
+            <li>Socio-economic data analysis</li>
+            <li>Academic report support</li>
           </ul>
         </div>
 
       </div>
 
     </div>
+
+  </div>
+</section>
+
+<section id="portfolio" class="reveal">
+  <div class="container">
+    <div class="section-title"><h2>My <span>Portfolio</span></h2></div>
+    <div class="grid">
+      <div class="card"><img src="https://via.placeholder.com/400x300"><div class="overlay">GIS</div></div>
+      <div class="card"><img src="https://via.placeholder.com/400x300"><div class="overlay">Urban</div></div>
+      <div class="card"><img src="https://via.placeholder.com/400x300"><div class="overlay">Data</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact reveal">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Contact <span>Me</span></h2>
+      <p>Feel free to reach out for academic, research, or collaboration opportunities</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+
+        <div class="contact-box">
+          <span>📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>Khulna, Bangladesh</p>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <span>📧</span>
+          <div>
+            <h4>Email</h4>
+            <p>mdsahiburrahman7@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <span>📞</span>
+          <div>
+            <h4>Phone</h4>
+            <p>+880 1609 807578</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTACT FORM -->
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+    </div>
+
   </div>
 </section>
 
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <div class="container">
-        <div class="section-title">
-          <h2>Portfolio</h2>
-        </div>
+<footer>© 2025 MD. Sahibur Rahman</footer>
 
-        <ul class="portfolio-filters">
-          <li class="active" data-filter="all">ALL</li>
-          <li data-filter="app">APP</li>
-          <li data-filter="product">PRODUCT</li>
-        </ul>
+<script>
+/* Scroll Progress */
+window.addEventListener("scroll", () => {
+  const s = document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById("scroll-progress").style.width = (s / h) * 100 + "%";
+});
 
-        <div class="row">
-          <div class="col-lg-4 portfolio-item" data-category="app">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-          </div>
-          <div class="col-lg-4 portfolio-item" data-category="product">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-          </div>
-          <div class="col-lg-4 portfolio-item" data-category="app">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="info-box">
-              <h5>Address</h5>
-              <p>Khulna, Bangladesh</p>
-            </div>
-            <div class="info-box">
-              <h5>Email</h5>
-              <p>mdsahiburrahman7@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <form>
-              <input class="form-control mb-3" placeholder="Your Name">
-              <input class="form-control mb-3" placeholder="Your Email">
-              <textarea class="form-control mb-3" rows="5" placeholder="Message"></textarea>
-              <button class="btn btn-primary">Send Message</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    function toggleTheme() {
-      document.documentElement.dataset.bsTheme =
-        document.documentElement.dataset.bsTheme === "dark" ? "light" : "dark";
+/* Reveal */
+function reveal() {
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("active");
     }
+  });
+}
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
 
-    const filters = document.querySelectorAll('.portfolio-filters li');
-    const items = document.querySelectorAll('.portfolio-item');
+/* Skill Bars */
+document.querySelectorAll(".bar div").forEach(bar => {
+  bar.style.width = bar.dataset.width;
+});
 
-    filters.forEach(filter => {
-      filter.onclick = () => {
-        filters.forEach(f => f.classList.remove('active'));
-        filter.classList.add('active');
-        const cat = filter.dataset.filter;
-        items.forEach(item => {
-          item.style.display =
-            cat === 'all' || item.dataset.category === cat ? 'block' : 'none';
-        });
-      };
-    });
-  </script>
+/* Nav Indicator */
+const links = document.querySelectorAll("#navMenu a");
+const indicator = document.querySelector(".nav-indicator");
+const sections = document.querySelectorAll("section");
+
+function moveIndicator(el) {
+  indicator.style.width = el.offsetWidth + "px";
+  indicator.style.left = el.offsetLeft + "px";
+}
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    if (scrollY >= sec.offsetTop - 150) {
+      links.forEach(a => {
+        if (a.getAttribute("href") === "#" + sec.id) moveIndicator(a);
+      });
+    }
+  });
+});
+
+window.onload = () => moveIndicator(links[0]);
+</script>
 
 </body>
 </html>
