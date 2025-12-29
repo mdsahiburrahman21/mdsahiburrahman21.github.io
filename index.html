@@ -205,6 +205,17 @@ section {
   border-radius: 20px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
+.typing-name::after,
+.typing-title::after {
+  content: "|";
+  margin-left: 4px;
+  animation: blinkCursor 1s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* FLOATING TAGS */
 .tag {
@@ -484,79 +495,106 @@ footer {
 /* ===== CONTACT SECTION ===== */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 50px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
-.contact-info {
+/* FORM */
+.contact-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.contact-form form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-.contact-box {
-  display: flex;
-  gap: 15px;
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 14px;
-  align-items: center;
-}
-
-.contact-box span {
-  font-size: 22px;
-}
-
-.contact-box h4 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.contact-box p {
-  margin: 3px 0 0;
-  color: #64748b;
-  font-size: 14px;
-}
-
-.contact-form {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 15px;
-  border: 1px solid #e2e8f0;
+  padding: 14px;
   border-radius: 10px;
-  font-size: 14px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: none;
-  border-color: #0d6efd;
+  border-color: #000;
 }
 
+/* BUTTON */
 .contact-form button {
-  background: #0d6efd;
-  color: #fff;
-  border: none;
+  margin-top: 10px;
   padding: 14px;
-  border-radius: 30px;
-  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: opacity 0.3s ease;
 }
 
 .contact-form button:hover {
-  background: #084298;
+  opacity: 0.85;
 }
 
+/* MAP */
+.contact-map {
+  width: 100%;
+  min-height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    height: 320px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 30px 20px;
+  }
+
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    height: 260px;
+  }
+}
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .contact-grid {
@@ -624,6 +662,52 @@ footer {
 
 </style>
 </head>
+<script>
+  const nameText = "MD. Sahibur Rahman";
+  const titleText = "Urban Planner | GIS & Data Analysis";
+
+  const typingSpeed = 100;
+  const erasingSpeed = 60;
+  const delayAfterType = 1500;
+
+  function typeLoop(element, text) {
+    let index = 0;
+    let isDeleting = false;
+
+    function loop() {
+      if (!isDeleting) {
+        // Typing
+        if (index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+          setTimeout(loop, typingSpeed);
+        } else {
+          setTimeout(() => isDeleting = true, delayAfterType);
+          setTimeout(loop, delayAfterType);
+        }
+      } else {
+        // Erasing
+        if (index > 0) {
+          element.textContent = text.substring(0, index - 1);
+          index--;
+          setTimeout(loop, erasingSpeed);
+        } else {
+          isDeleting = false;
+          setTimeout(loop, typingSpeed);
+        }
+      }
+    }
+    loop();
+  }
+
+  window.addEventListener("load", () => {
+    typeLoop(document.querySelector(".typing-name"), nameText);
+
+    setTimeout(() => {
+      typeLoop(document.querySelector(".typing-title"), titleText);
+    }, 1200);
+  });
+</script>
 
 <body>
 
@@ -657,11 +741,14 @@ footer {
 
     <div class="hero-content">
       <h1>
-        <mark>Hello, I'm</mark> <span>MD. Sahibur</span><br>
-        <span>Rahman</span>
+          <mark>Hello, I'm</mark><br>
+          <span class="typing-name"></span>
       </h1>
 
-      <h3>Urban Planner | GIS & Data Analysis</h3>
+      <h3>
+         <span class="typing-title"></span>
+     </h3>
+
 
       <p>
         Passionate about sustainable urban development, spatial analysis,
@@ -850,11 +937,13 @@ footer {
 <section id="contact" class="contact reveal">
   <div class="container">
 
+    <!-- SECTION TITLE -->
     <div class="section-title">
       <h2>Contact <span>Me</span></h2>
       <p>Feel free to reach out for academic, research, or collaboration opportunities</p>
     </div>
 
+    <!-- CONTACT GRID -->
     <div class="contact-grid">
 
       <!-- CONTACT INFO -->
@@ -885,20 +974,23 @@ footer {
         </div>
 
       </div>
+      <!-- END CONTACT INFO -->
 
-      <!-- CONTACT FORM -->
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <!-- MAP -->
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3642.692052035478!2d89.92663231503469!3d24.14647312439338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdfe01a207d86b%3A0xedc03a64db6f39e9!2sNallapara!5e0!3m2!1sen!2sbd!4v1703854940000!5m2!1sen!2sbd"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <!-- END MAP -->
 
     </div>
+    <!-- END CONTACT GRID -->
 
   </div>
 </section>
-
 
 <footer>© 2025 MD. Sahibur Rahman</footer>
 
@@ -951,6 +1043,7 @@ window.onload = () => moveIndicator(links[0]);
 
 </body>
 </html>
+
 
 
 
